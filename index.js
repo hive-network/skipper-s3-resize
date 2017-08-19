@@ -223,7 +223,7 @@ module.exports = function SkipperS3 (globalOpts) {
       var gmOptions = options.resize.options || '';
       // Allow `tmpdir` for knox-mpu to be passed in, or default
       // to `.tmp/s3-upload-part-queue`
-      gm(__newFile).resize(width, height, gmOptions).noProfile().stream(function (err, stdout, stderr) {
+      gm(__newFile).resize(width, height, gmOptions).noProfile().autoOrient().stream(function (err, stdout, stderr) {
         if (err) return next(err);
 
         options.tmpdir = options.tmpdir || path.resolve(process.cwd(), '.tmp/s3-upload-part-queue');
